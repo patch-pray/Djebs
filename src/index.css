@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 37 33% 96%;
+    --foreground: 0 0% 17%;
+    --card: 36 24% 91%;
+    --card-foreground: 0 0% 17%;
+    --popover: 37 33% 96%;
+    --popover-foreground: 0 0% 17%;
+    --primary: 0 0% 17%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 36 24% 91%;
+    --secondary-foreground: 0 0% 17%;
+    --muted: 34 20% 86%;
+    --muted-foreground: 20 5% 39%;
+    --accent: 37 41% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 34 20% 86%;
+    --input: 34 20% 86%;
+    --ring: 37 41% 54%;
+    --radius: 0.25rem;
+
+    /* Brand tokens */
+    --cream: 37 33% 96%;
+    --parchment: 36 24% 91%;
+    --linen: 34 20% 86%;
+    --charcoal: 0 0% 17%;
+    --stone: 20 5% 39%;
+    --taupe: 27 14% 48%;
+    --deep-navy: 218 44% 20%;
+    --champagne: 37 41% 54%;
+    --champagne-lt: 33 46% 65%;
+
+    --sidebar-background: 37 33% 96%;
+    --sidebar-foreground: 0 0% 17%;
+    --sidebar-primary: 0 0% 17%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 36 24% 91%;
+    --sidebar-accent-foreground: 0 0% 17%;
+    --sidebar-border: 34 20% 86%;
+    --sidebar-ring: 37 41% 54%;
+
+    font-family: 'Inter', sans-serif;
+  }
+
+  .dark {
+    --background: 218 44% 20%;
+    --foreground: 0 0% 100%;
+    --card: 218 40% 16%;
+    --card-foreground: 0 0% 100%;
+    --popover: 218 44% 20%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 218 44% 20%;
+    --secondary: 218 30% 25%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 218 30% 25%;
+    --muted-foreground: 34 20% 86%;
+    --accent: 37 41% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 218 30% 25%;
+    --input: 218 30% 25%;
+    --ring: 37 41% 54%;
+    --sidebar-background: 218 40% 16%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 218 44% 20%;
+    --sidebar-accent: 218 30% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 218 30% 25%;
+    --sidebar-ring: 37 41% 54%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    @apply text-foreground;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .section-cream {
+    @apply bg-background;
+  }
+  .section-parchment {
+    background-color: hsl(var(--parchment));
+  }
+  .section-navy {
+    background-color: hsl(var(--deep-navy));
+    color: white;
+  }
+  .text-stone-brand {
+    color: hsl(var(--stone));
+  }
+  .text-taupe {
+    color: hsl(var(--taupe));
+  }
+  .text-champagne {
+    color: hsl(var(--champagne));
+  }
+  .border-linen {
+    border-color: hsl(var(--linen));
+  }
+  .border-champagne {
+    border-color: hsl(var(--champagne));
+  }
+  .bg-champagne {
+    background-color: hsl(var(--champagne));
+  }
+  .bg-deep-navy {
+    background-color: hsl(var(--deep-navy));
+  }
+  .bg-parchment {
+    background-color: hsl(var(--parchment));
+  }
+  .bg-linen {
+    background-color: hsl(var(--linen));
+  }
+  .divider-champagne {
+    @apply w-24 h-px mx-auto;
+    background-color: hsl(var(--champagne));
+  }
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* RTL support */
+  [dir="rtl"] {
+    font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+  }
+  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out both;
+  }
+  .animate-fade-up-delay-1 {
+    animation: fadeUp 0.6s ease-out 0.15s both;
+  }
+  .animate-fade-up-delay-2 {
+    animation: fadeUp 0.6s ease-out 0.3s both;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
