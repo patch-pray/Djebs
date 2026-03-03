@@ -67,8 +67,8 @@ const Products = () => {
                   transition={{ duration: 0.4 }}
                 >
                   <Link to={`/products/${product.slug}`} className="group">
-                    <div className="border border-linen rounded overflow-hidden transition-all duration-300 group-hover:border-champagne">
-                      <div className="aspect-[3/4] overflow-hidden bg-parchment relative">
+                    <div className="border border-linen rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-champagne group-hover:shadow-lg bg-white">
+                      <div className="aspect-[3/4] overflow-hidden bg-parchment rounded-t-2xl relative">
                         <img
                           src={product.images[0]}
                           alt={name}

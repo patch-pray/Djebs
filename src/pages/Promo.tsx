@@ -30,8 +30,8 @@ const Promo = () => {
               const name = locale === 'ar' ? p.name_ar : locale === 'en' ? p.name_en : p.name_fr;
               return (
                 <Link key={p.id} to={`/products/${p.slug}`} className="group">
-                  <div className="border border-linen rounded overflow-hidden group-hover:border-champagne transition-all relative">
-                    <div className="aspect-[3/4] overflow-hidden bg-parchment relative">
+                  <div className="border border-linen rounded-2xl overflow-hidden group-hover:border-champagne group-hover:shadow-lg transition-all duration-300 bg-white">
+                    <div className="aspect-[3/4] overflow-hidden bg-parchment rounded-t-2xl relative">
                       <img src={p.images[0]} alt={name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                       <span className="absolute top-3 left-3 bg-deep-navy text-primary-foreground text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded">
                         Promo
