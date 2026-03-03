@@ -29,8 +29,8 @@ const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <Link to={`/products/${product.slug}`} className="group">
-      <div className="border border-linen rounded overflow-hidden transition-all duration-300 group-hover:border-champagne">
-        <div className="aspect-[3/4] overflow-hidden bg-parchment">
+      <div className="border border-linen rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-champagne group-hover:shadow-lg bg-white">
+        <div className="aspect-[3/4] overflow-hidden bg-parchment rounded-t-2xl">
           <img
             src={product.images[0]}
             alt={name}

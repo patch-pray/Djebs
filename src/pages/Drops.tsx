@@ -73,8 +73,8 @@ const Drops = () => {
               const name = locale === 'ar' ? p.name_ar : locale === 'en' ? p.name_en : p.name_fr;
               return (
                 <Link key={p.id} to={`/products/${p.slug}`} className="group">
-                  <div className="border border-linen rounded overflow-hidden group-hover:border-champagne transition-all">
-                    <div className="aspect-[3/4] overflow-hidden bg-parchment">
+                  <div className="border border-linen rounded-2xl overflow-hidden group-hover:border-champagne group-hover:shadow-lg transition-all duration-300 bg-white">
+                    <div className="aspect-[3/4] overflow-hidden bg-parchment rounded-t-2xl">
                       <img src={p.images[0]} alt={name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                     </div>
                     <div className="p-4">
