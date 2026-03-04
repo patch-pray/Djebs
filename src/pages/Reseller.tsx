@@ -148,7 +148,7 @@ const Reseller = () => {
       </section>
 
       {/* ═══════════ ADVANTAGES BENTO GRID ═══════════ */}
-      <section className="py-24 bg-background relative overflow-hidden">
+      <section className="py-28 bg-background relative overflow-hidden">
         {/* Subtle background pattern */}
         <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -158,49 +158,104 @@ const Reseller = () => {
           }}
         />
 
+        {/* Decorative floating orbs */}
+        <div
+          className="absolute top-20 -left-32 w-[400px] h-[400px] rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(circle, hsla(37,41%,54%,0.08) 0%, transparent 70%)' }}
+        />
+        <div
+          className="absolute bottom-10 -right-20 w-[300px] h-[300px] rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(circle, hsla(37,41%,54%,0.06) 0%, transparent 70%)' }}
+        />
+
         <div className="container mx-auto px-4 md:px-8 relative z-10">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <span className="inline-block text-champagne text-xs font-medium tracking-[0.25em] uppercase mb-4">
+          <motion.div {...fadeUp} className="text-center mb-20">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-champagne/10 text-champagne text-xs font-semibold tracking-[0.2em] uppercase mb-6">
+              <Sparkles className="w-3.5 h-3.5" />
               {t('reseller.subtitle')}
             </span>
-            <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4">
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-foreground mb-5">
               {t('reseller.advantages')}
             </h2>
-            <div className="divider-champagne mt-6" />
+            <p className="text-stone text-sm md:text-base max-w-lg mx-auto">
+              Des avantages exclusifs pour nos partenaires revendeurs
+            </p>
+            <div className="divider-champagne mt-8" />
           </motion.div>
 
-          {/* Bento-style grid — first two cards are wider */}
+          {/* Modern Bento Grid */}
           <motion.div
             {...staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto"
           >
             {advantages.map((adv, i) => {
               const Icon = adv.icon;
-              const isLarge = i < 2;
+              // First two cards span full width on larger screens for variety
+              const isFeature = i === 0 || i === 1;
               return (
                 <motion.div
                   key={adv.key}
                   {...staggerChild}
-                  className={`group relative p-7 rounded-2xl glass-card gradient-border cursor-default
-                    hover:shadow-xl hover:shadow-champagne/10 hover:-translate-y-1 transition-all duration-400
-                    ${isLarge ? 'sm:col-span-1 lg:col-span-1' : ''}`}
+                  className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/80 to-parchment/60 
+                    border border-linen/80 backdrop-blur-sm
+                    hover:border-champagne/60 hover:shadow-2xl hover:shadow-champagne/15 
+                    hover:-translate-y-2 transition-all duration-500 ease-out cursor-default
+                    ${isFeature ? 'lg:col-span-1 p-8 min-h-[220px]' : 'p-7 min-h-[200px]'}`}
                 >
+                  {/* Hover gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-champagne/0 via-champagne/0 to-champagne/5 
+                    group-hover:from-champagne/5 group-hover:via-transparent group-hover:to-champagne/10 
+                    transition-all duration-500 pointer-events-none" />
+
+                  {/* Decorative corner accent */}
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-champagne/10 to-transparent 
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-bl-full" />
+
                   {/* Numbered badge */}
-                  <span className="absolute top-4 right-5 text-[10px] font-bold text-champagne/30 tracking-wider">
+                  <span className="absolute top-5 right-6 text-[11px] font-bold text-champagne/25 tracking-widest 
+                    group-hover:text-champagne/40 transition-colors duration-300">
                     {String(i + 1).padStart(2, '0')}
                   </span>
 
-                  {/* Icon with glow */}
-                  <div className="w-12 h-12 rounded-xl gradient-champagne flex items-center justify-center mb-5 icon-glow group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-5 h-5 text-foreground" strokeWidth={1.5} />
+                  {/* Icon container with animated glow */}
+                  <div className="relative w-14 h-14 rounded-2xl gradient-champagne flex items-center justify-center mb-6 
+                    shadow-lg shadow-champagne/20 group-hover:shadow-xl group-hover:shadow-champagne/30
+                    group-hover:scale-110 transition-all duration-400">
+                    <Icon className="w-6 h-6 text-foreground" strokeWidth={1.5} />
+                    {/* Pulse ring on hover */}
+                    <div className="absolute inset-0 rounded-2xl border-2 border-champagne/30 scale-100 opacity-0 
+                      group-hover:scale-125 group-hover:opacity-0 transition-all duration-700 
+                      group-hover:animate-pulse" />
                   </div>
 
-                  <p className="text-foreground text-sm leading-relaxed font-medium pr-6">
-                    {t(`reseller.${adv.key}`)}
-                  </p>
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <p className="text-foreground text-[15px] leading-relaxed font-medium pr-8 
+                      group-hover:text-foreground/90 transition-colors duration-300">
+                      {t(`reseller.${adv.key}`)}
+                    </p>
+                  </div>
+
+                  {/* Bottom decorative line */}
+                  <div className="absolute bottom-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-champagne/20 to-transparent 
+                    scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
                 </motion.div>
               );
             })}
+          </motion.div>
+
+          {/* Bottom CTA hint */}
+          <motion.div 
+            {...fadeUp} 
+            className="text-center mt-16"
+          >
+            <a
+              href="#form"
+              className="inline-flex items-center gap-2 text-champagne text-sm font-medium hover:gap-3 transition-all duration-300"
+            >
+              <span>Rejoignez notre réseau</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </motion.div>
         </div>
       </section>

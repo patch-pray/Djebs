@@ -141,25 +141,92 @@ const Index = () => {
       </section>
 
       {/* Notre Histoire */}
-      <section className="section-parchment py-20">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-stretch">
-            <motion.div {...fadeUp} className="overflow-hidden">
-              <img
-                src={notreHistoireImage}
-                alt="Notre Histoire"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </motion.div>
-            <motion.div {...fadeUp} className="flex flex-col justify-center px-8 md:px-14 py-12">
-              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-8 text-center">
+      <section className="relative overflow-hidden bg-background">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px] lg:min-h-[700px]">
+          {/* Image Side - Full bleed */}
+          <motion.div 
+            {...fadeUp} 
+            className="relative overflow-hidden group"
+          >
+            <img
+              src={notreHistoireImage}
+              alt="Notre Histoire"
+              className="w-full h-full min-h-[450px] object-cover transition-transform duration-1000 
+                group-hover:scale-105"
+              loading="lazy"
+            />
+            
+            {/* Subtle gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/30 
+              lg:to-background/50 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/10 via-transparent to-transparent 
+              pointer-events-none" />
+          </motion.div>
+
+          {/* Content Side */}
+          <motion.div 
+            {...fadeUp} 
+            className="relative flex flex-col justify-center px-8 md:px-12 lg:px-20 xl:px-28 py-16 lg:py-24"
+            style={{ backgroundColor: 'hsl(var(--parchment))' }}
+          >
+            {/* Background subtle pattern */}
+            <div
+              className="absolute inset-0 opacity-[0.02] pointer-events-none"
+              style={{
+                backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)',
+                backgroundSize: '24px 24px',
+              }}
+            />
+
+            {/* Decorative vertical line */}
+            <div className="absolute left-0 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-champagne/40 to-transparent 
+              hidden lg:block" />
+
+            <div className="relative z-10 max-w-xl">
+              {/* Section label */}
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-3 text-champagne text-xs font-semibold 
+                  tracking-[0.3em] uppercase mb-8"
+              >
+                <span className="w-10 h-px bg-champagne" />
+                Notre Atelier
+              </motion.span>
+
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-10 leading-[1.1]">
                 {t('histoire.title')}
               </h2>
-              <p className="text-stone leading-[1.8] mb-5 text-[15px]">{t('histoire.p1')}</p>
-              <p className="text-stone leading-[1.8] text-[15px]">{t('histoire.p2')}</p>
-            </motion.div>
-          </div>
+
+              <div className="space-y-6 mb-10">
+                <p className="text-stone leading-[2] text-base lg:text-lg">
+                  {t('histoire.p1')}
+                </p>
+                <p className="text-stone leading-[2] text-base lg:text-lg">
+                  {t('histoire.p2')}
+                </p>
+              </div>
+
+              {/* CTA Link */}
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-3 text-foreground text-sm font-medium tracking-wider 
+                  uppercase group/link hover:text-champagne transition-colors duration-300"
+              >
+                <span>En savoir plus</span>
+                <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-300" />
+              </Link>
+            </div>
+
+            {/* Bottom decorative element */}
+            <div className="absolute bottom-12 right-12 hidden lg:flex items-center gap-2 opacity-30">
+              <div className="w-2 h-2 rounded-full bg-champagne" />
+              <div className="w-4 h-4 rounded-full border border-champagne" />
+              <div className="w-6 h-6 rounded-full border border-champagne/50" />
+            </div>
+          </motion.div>
         </div>
       </section>
 
